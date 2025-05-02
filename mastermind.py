@@ -93,7 +93,7 @@ def guessValid():
     i = 0 
     while i < 4:
         try: 
-            color = int(input('Guess color: '))
+            color = int(input(f'Guess color {i + 1}: '))
     # must be inbetween 0 and 5 (inclusive)
             if color >= 0 and color <= 5:
                 guessCode.append(color)
@@ -158,8 +158,6 @@ def playAgain():
 
 def main(seedIn):
     truth = False
-    import random
-    random.seed(seedIn)
     while truth == False:
         # implements the pseudocode by calling the defined functions that are above
         # hiddenCode is array with hidden code in slots 0->3 with numbers range 0->5
@@ -171,5 +169,23 @@ def main(seedIn):
 
 
 if __name__ == "__main__":
-    seed = int(input("Enter a random seed (any number): "))
+    import sys
+    import random
+    
+    # exception handling
+    try:
+        seed_input = input("Enter a seed, or press Enter for a random code: ").strip()
+        if seed_input == "":
+            seed = None
+        else:
+            seed = int(seed_input)
+    except ValueError: # invalid number or multi-string input 
+        print("Invalid input. Using a random seed instead.")
+        seed = None
+
+    if seed is not None:
+        random.seed(seed)
+    else:
+        random.seed()
+        
     main(seed)
