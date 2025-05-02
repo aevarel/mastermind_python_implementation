@@ -25,7 +25,7 @@ def  generateHiddenCode():
 # function to handle the makeguess, checkguess functions
 def makeGuess(hiddenCode):
     print('The secret code has been chosen. You have 10 tries to guess the code.\n')
-    print('-----------------------------')
+    print('-----------------------------')  
     print('Make a guess of four colors:')
     print('0 - red')
     print('1 - orange')
@@ -71,8 +71,8 @@ def cluePrinting(clue, guessCode, validGuesses, hiddenCode):
         # Changing this to a more readable clue format
         exact_matches = clue.count(2) # num colors in exact positions
         color_matches = clue.count(1) # num colors in wrong pos.
-        print('Clues:\n')
-        print('{0} exact matches (correct color in correct position)\n{1} color matches (correct color in wrong position).'.format(exact_matches,color_matches))
+        print('Clues:')
+        print('{0} exact matches (correct color in correct position)\n{1} color matches (correct color in wrong position).\n'.format(exact_matches,color_matches))
         print('You have {0} guesses left'.format((10-validGuesses)))
         print('-----------------------------')
         print('Make a guess of four colors:')
